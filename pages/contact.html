@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get Started — Agent Outsource</title>
+  <meta name="description" content="Tell us the role you need filled. We build the shortlist, handle the paperwork, and manage the engagement." />
+  <link rel="icon" type="image/png" href="../assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="nav__logo" href="../index.html" aria-label="Agent Outsource home">
+        <img src="../assets/logo-purple.png" alt="Agent Outsource" />
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="how-it-works.html">How It Works</a>
+        <a href="roles.html">Roles</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="btn btn--white nav__cta">Get Started</a>
+      </nav>
+      <button class="nav__toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="page-head">
+    <div class="wrap">
+      <span class="eyebrow">Get Started</span>
+      <h1>Tell Us the Role</h1>
+      <p class="lead">Fill in the form or book a call. We will tell you honestly whether we can fill the role, and how fast.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:start;">
+
+      <!-- FORM -->
+      <div class="form-wrap">
+        <h3 style="margin-bottom:1.5rem;">Send Us Your Details</h3>
+        <!--
+          FORM SETUP:
+          Replace action="#" with your endpoint. Easiest options:
+          - Formspree:  action="https://formspree.io/f/XXXXXXXX" method="POST"
+          - Netlify:    add  netlify  attribute (auto-detected on Netlify)
+          - Basin:      action="https://usebasin.com/f/XXXXXXXX" method="POST"
+        -->
+        <form data-form="contact" action="#" method="POST">
+          <div class="field">
+            <label for="name">Your Name</label>
+            <input id="name" name="name" type="text" required placeholder="Jane Smith" />
+          </div>
+          <div class="field">
+            <label for="email">Work Email</label>
+            <input id="email" name="email" type="email" required placeholder="jane@company.com" />
+          </div>
+          <div class="field">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" placeholder="Company name" />
+          </div>
+          <div class="field">
+            <label for="role">Role You Need Filled</label>
+            <select id="role" name="role">
+              <option value="">Select a category</option>
+              <option>Sales / SDR</option>
+              <option>Marketing</option>
+              <option>Creative / Design</option>
+              <option>Operations / Admin</option>
+              <option>Finance / Bookkeeping</option>
+              <option>Customer Support</option>
+              <option>Technical / Development</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="details">Tell Us About the Work</label>
+            <textarea id="details" name="details" placeholder="What does this role do? What tools and hours matter?"></textarea>
+          </div>
+          <button type="submit" class="btn btn--purple btn--lg">Send It Over</button>
+          <p class="form-note" data-form-status style="display:none;"></p>
+          <p class="form-note">We reply within one business day. No spam, no pressure.</p>
+        </form>
+      </div>
+
+      <!-- CALENDAR -->
+      <div>
+        <h3 style="margin-bottom:1.5rem;">Or Book a Call</h3>
+        <div class="card" style="padding:0;overflow:hidden;">
+          <!--
+            CALENDAR SETUP:
+            Paste your Cal.com or Calendly embed here. Two options:
+
+            1) Inline embed (replace the placeholder below), e.g. Calendly:
+               <div class="calendly-inline-widget"
+                    data-url="https://calendly.com/YOUR-HANDLE/intro"
+                    style="min-width:320px;height:640px;"></div>
+               <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+            2) Cal.com inline embed — grab the snippet from your Cal.com event type.
+          -->
+          <div style="min-height:520px;display:grid;place-items:center;background:var(--purple-wash);padding:2rem;text-align:center;">
+            <div>
+              <p style="font-family:var(--font-display);font-weight:900;text-transform:uppercase;font-size:1.4rem;margin-bottom:0.75rem;">Calendar Embed Goes Here</p>
+              <p style="max-width:34ch;margin:0 auto 1.5rem;">Drop your Calendly or Cal.com inline embed into this panel. Setup notes are in the HTML comment.</p>
+              <a href="mailto:hello@agentoutsource.com" class="btn">Email Us Instead</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="wrap footer__grid">
+      <div>
+        <div class="footer__logo"><img src="../assets/logo-purple.png" alt="Agent Outsource" /></div>
+        <p style="max-width:38ch;opacity:0.85;">Full-time offshore talent, fully managed. You approve the hire, we handle the rest.</p>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="how-it-works.html">How It Works</a>
+        <a href="roles.html">Roles</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Get Started</a>
+      </div>
+      <div>
+        <h5>Get In Touch</h5>
+        <a href="contact.html">Book a Call</a>
+        <a href="mailto:hello@agentoutsource.com">hello@agentoutsource.com</a>
+      </div>
+    </div>
+    <div class="wrap footer__bottom">
+      <span>© 2026 Agent Outsource. All rights reserved.</span>
+      <span>Built for teams who'd rather build.</span>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
