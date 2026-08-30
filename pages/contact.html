@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="../assets/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body>
@@ -22,16 +22,17 @@
         <a href="how-it-works.html">How It Works</a>
         <a href="roles.html">Roles</a>
         <a href="about.html">About</a>
-        <a href="contact.html" class="btn btn--white nav__cta">Get Started</a>
+        <a href="contact.html" class="btn nav__cta">Get Started</a>
       </nav>
       <button class="nav__toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </header>
 
   <div class="page-head">
-    <div class="wrap">
+    <div class="glow-orb glow-orb--cyan" style="width:340px;height:340px;top:-140px;right:-80px;"></div>
+    <div class="wrap reveal">
       <span class="eyebrow">Get Started</span>
-      <h1>Tell Us the Role</h1>
+      <h1>Tell Us <span class="grad-text">the Role</span></h1>
       <p class="lead">Fill in the form or book a call. We will tell you honestly whether we can fill the role, and how fast.</p>
     </div>
   </div>
@@ -40,7 +41,7 @@
     <div class="wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:start;">
 
       <!-- FORM -->
-      <div class="form-wrap">
+      <div class="form-wrap reveal">
         <h3 style="margin-bottom:1.5rem;">Send Us Your Details</h3>
         <!--
           FORM SETUP:
@@ -80,14 +81,14 @@
             <label for="details">Tell Us About the Work</label>
             <textarea id="details" name="details" placeholder="What does this role do? What tools and hours matter?"></textarea>
           </div>
-          <button type="submit" class="btn btn--purple btn--lg">Send It Over</button>
+          <button type="submit" class="btn btn--lg">Send It Over</button>
           <p class="form-note" data-form-status style="display:none;"></p>
           <p class="form-note">We reply within one business day. No spam, no pressure.</p>
         </form>
       </div>
 
       <!-- CALENDAR -->
-      <div>
+      <div class="reveal">
         <h3 style="margin-bottom:1.5rem;">Or Book a Call</h3>
         <div class="card" style="padding:0;overflow:hidden;">
           <!--
@@ -102,12 +103,20 @@
 
             2) Cal.com inline embed — grab the snippet from your Cal.com event type.
           -->
-          <div style="min-height:520px;display:grid;place-items:center;background:var(--purple-wash);padding:2rem;text-align:center;">
+          <div style="min-height:480px;display:grid;place-items:center;padding:2rem;text-align:center;">
             <div>
-              <p style="font-family:var(--font-display);font-weight:900;text-transform:uppercase;font-size:1.4rem;margin-bottom:0.75rem;">Calendar Embed Goes Here</p>
-              <p style="max-width:34ch;margin:0 auto 1.5rem;">Drop your Calendly or Cal.com inline embed into this panel. Setup notes are in the HTML comment.</p>
-              <a href="mailto:hello@agentoutsource.com" class="btn">Email Us Instead</a>
+              <p style="font-family:var(--font-mono);font-weight:600;text-transform:uppercase;letter-spacing:0.08em;font-size:0.95rem;margin-bottom:0.85rem;color:var(--purple-bright);">Calendar Embed Goes Here</p>
+              <p style="max-width:34ch;margin:0 auto 1.5rem;color:var(--muted);">Drop your Calendly or Cal.com inline embed into this panel. Setup notes are in the HTML comment.</p>
+              <a href="mailto:hello@agentoutsource.com" class="btn btn--ghost">Email Us Instead</a>
             </div>
+          </div>
+        </div>
+
+        <!-- PLACEHOLDER: supporting graphic — team photo, workflow snapshot, or product shot (960×540) -->
+        <div class="ph ph--wide" style="margin-top:1.5rem;">
+          <div class="ph__inner">
+            <svg style="width:34px;height:34px;color:var(--purple-bright);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+            <span class="ph__label"><b>Supporting Visual</b>Team photo, workflow snapshot, or product shot — 960×540</span>
           </div>
         </div>
       </div>
@@ -119,7 +128,12 @@
     <div class="wrap footer__grid">
       <div>
         <div class="footer__logo"><img src="../assets/logo-purple.png" alt="Agent Outsource" /></div>
-        <p style="max-width:38ch;opacity:0.85;">Full-time offshore talent, fully managed. You approve the hire, we handle the rest.</p>
+        <p style="max-width:38ch;">Full-time offshore talent, fully managed. You approve the hire, we handle the rest.</p>
+        <div class="social-row">
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-5M12 11c0-1.5 1-2 2-2s2 .8 2 2v5"/></svg></a>
+          <a href="#" aria-label="X / Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l16 16M20 4L4 20"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+        </div>
       </div>
       <div>
         <h5>Company</h5>

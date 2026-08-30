@@ -8,10 +8,19 @@
   <link rel="icon" type="image/png" href="../assets/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body>
+
+  <svg style="display:none" aria-hidden="true">
+    <symbol id="icon-img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
+    </symbol>
+    <symbol id="icon-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/>
+    </symbol>
+  </svg>
 
   <header class="site-header">
     <div class="wrap nav">
@@ -22,16 +31,17 @@
         <a href="how-it-works.html">How It Works</a>
         <a href="roles.html">Roles</a>
         <a href="about.html">About</a>
-        <a href="contact.html" class="btn btn--white nav__cta">Get Started</a>
+        <a href="contact.html" class="btn nav__cta">Get Started</a>
       </nav>
       <button class="nav__toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </header>
 
   <div class="page-head">
-    <div class="wrap">
+    <div class="glow-orb glow-orb--purple" style="width:340px;height:340px;top:-140px;left:-80px;"></div>
+    <div class="wrap reveal">
       <span class="eyebrow">The Process</span>
-      <h1>How It Works</h1>
+      <h1>How It <span class="grad-text">Works</span></h1>
       <p class="lead">You are only involved where your judgment matters. Everything else is our job.</p>
     </div>
   </div>
@@ -39,24 +49,28 @@
   <!-- FULL PROCESS -->
   <section class="section">
     <div class="wrap">
-      <div class="steps">
+      <div class="steps reveal">
         <div class="step">
-          <div class="step__n">1</div>
+          <div class="ph ph--icon"><div class="ph__inner"><svg class="ph__icon"><use href="#icon-spark"/></svg></div></div>
+          <div class="step__n">Step 01</div>
           <h4>Tell Us the Role</h4>
           <p>We get clear on the tasks, tools, hours, and what a great hire looks like a few months in. The sharper the brief, the sharper the shortlist.</p>
         </div>
         <div class="step">
-          <div class="step__n">2</div>
+          <div class="ph ph--icon"><div class="ph__inner"><svg class="ph__icon"><use href="#icon-spark"/></svg></div></div>
+          <div class="step__n">Step 02</div>
           <h4>We Build Your Shortlist</h4>
           <p>We source far wider than any single job post, screen for skills, English, and tool fluency, then cut hard. Finalists take a paid test on real work from your role.</p>
         </div>
         <div class="step">
-          <div class="step__n">3</div>
+          <div class="ph ph--icon"><div class="ph__inner"><svg class="ph__icon"><use href="#icon-spark"/></svg></div></div>
+          <div class="step__n">Step 03</div>
           <h4>You Choose</h4>
           <p>You interview a small group of people who have already proven they can do the job. You make the final decision, not us.</p>
         </div>
         <div class="step">
-          <div class="step__n">4</div>
+          <div class="ph ph--icon"><div class="ph__inner"><svg class="ph__icon"><use href="#icon-spark"/></svg></div></div>
+          <div class="step__n">Step 04</div>
           <h4>We Keep It Running</h4>
           <p>Onboarding, payroll, compliance, and ongoing management stay with us for as long as your hire is on the team.</p>
         </div>
@@ -65,14 +79,14 @@
   </section>
 
   <!-- WHAT YOU OWN VS WHAT WE OWN -->
-  <section class="section section--purple">
+  <section class="section section--glow">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="eyebrow">Clear Lines</span>
         <h2>Who Owns What</h2>
         <p class="lead">No grey areas. You lead the work. We carry the operational load around it.</p>
       </div>
-      <div class="split">
+      <div class="split reveal">
         <div class="split__col split__col--good">
           <h3>You Own</h3>
           <ul class="split__list">
@@ -97,27 +111,34 @@
 
   <!-- VETTING DETAIL -->
   <section class="section">
-    <div class="wrap">
-      <div class="section-head">
+    <div class="wrap feature-layout">
+      <div class="reveal">
         <span class="eyebrow">Vetting</span>
-        <h2>How We Test Candidates</h2>
-        <p class="lead">By the time you meet someone, they have already been tested for your role. Every stage is built around your specific job.</p>
+        <h2 style="margin-bottom:1.25rem;">How We Test Candidates</h2>
+        <p class="lead" style="margin-bottom:2.25rem;">By the time you meet someone, they have already been tested for your role. Every stage is built around your specific job.</p>
+        <!-- PLACEHOLDER: screenshot of a scorecard, test result, or interview snapshot (1000×1000) -->
+        <div class="ph ph--square">
+          <div class="ph__inner">
+            <svg class="ph__icon"><use href="#icon-img"/></svg>
+            <span class="ph__label"><b>Supporting Visual</b>Scorecard, test result, or interview snapshot — 1000×1000</span>
+          </div>
+        </div>
       </div>
-      <div class="features">
+      <div class="features reveal">
         <div class="feature">
-          <div class="feature__num">1</div>
+          <div class="feature__num">01</div>
           <div><h4>Screen</h4><p>English fluency, clarity, call quality, and a first look at relevant experience.</p></div>
         </div>
         <div class="feature">
-          <div class="feature__num">2</div>
+          <div class="feature__num">02</div>
           <div><h4>Preview Test</h4><p>How they think through the real problems your role involves.</p></div>
         </div>
         <div class="feature">
-          <div class="feature__num">3</div>
+          <div class="feature__num">03</div>
           <div><h4>Deep Interview</h4><p>Experience, past performance, and culture fit, in depth.</p></div>
         </div>
         <div class="feature">
-          <div class="feature__num">4</div>
+          <div class="feature__num">04</div>
           <div><h4>Paid Work Test</h4><p>A few hours of the actual tasks they would do for you. We pay them for it.</p></div>
         </div>
       </div>
@@ -125,12 +146,12 @@
   </section>
 
   <!-- CTA -->
-  <section class="section section--acid">
-    <div class="wrap cta-block">
+  <section class="section section--cta">
+    <div class="wrap cta-block reveal">
       <span class="eyebrow">Ready When You Are</span>
       <h2>Start With the Role You're Struggling to Fill</h2>
       <p class="lead">Tell us what you need. We will tell you honestly whether we can fill it, and how fast.</p>
-      <a href="contact.html" class="btn btn--purple btn--lg">Get Started</a>
+      <a href="contact.html" class="btn btn--acid btn--lg">Get Started</a>
     </div>
   </section>
 
@@ -138,7 +159,12 @@
     <div class="wrap footer__grid">
       <div>
         <div class="footer__logo"><img src="../assets/logo-purple.png" alt="Agent Outsource" /></div>
-        <p style="max-width:38ch;opacity:0.85;">Full-time offshore talent, fully managed. You approve the hire, we handle the rest.</p>
+        <p style="max-width:38ch;">Full-time offshore talent, fully managed. You approve the hire, we handle the rest.</p>
+        <div class="social-row">
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-5M12 11c0-1.5 1-2 2-2s2 .8 2 2v5"/></svg></a>
+          <a href="#" aria-label="X / Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l16 16M20 4L4 20"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+        </div>
       </div>
       <div>
         <h5>Company</h5>

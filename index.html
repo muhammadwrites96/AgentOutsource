@@ -17,11 +17,27 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+
+  <!-- Icon sprite (reused by placeholder graphics across the site) -->
+  <svg style="display:none" aria-hidden="true">
+    <symbol id="icon-img" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
+    </symbol>
+    <symbol id="icon-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/>
+    </symbol>
+    <symbol id="icon-badge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3l2.5 2.5H18v3.5L20.5 12 18 14.5V18h-3.5L12 20.5 9.5 18H6v-3.5L3.5 12 6 9.5V6h3.5L12 3z"/>
+    </symbol>
+    <symbol id="icon-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/>
+    </symbol>
+  </svg>
 
   <!-- ============ HEADER ============ -->
   <header class="site-header">
@@ -33,7 +49,7 @@
         <a href="pages/how-it-works.html">How It Works</a>
         <a href="pages/roles.html">Roles</a>
         <a href="pages/about.html">About</a>
-        <a href="pages/contact.html" class="btn btn--white nav__cta">Get Started</a>
+        <a href="pages/contact.html" class="btn nav__cta">Get Started</a>
       </nav>
       <button class="nav__toggle" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -43,20 +59,28 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero">
+    <div class="glow-orb glow-orb--cyan" style="width:380px;height:380px;top:-120px;right:-80px;animation:float 9s ease-in-out infinite;"></div>
     <div class="wrap hero__grid">
       <div class="hero__copy">
         <span class="eyebrow">Fully Managed Offshore Talent</span>
-        <h1>You Approve the Hire.<span>We Handle the Rest.</span></h1>
+        <h1>You Approve the Hire.<br><span class="grad-text">We Handle the Rest.</span></h1>
         <p class="lead hero__sub">We recruit, test, run payroll, and handle compliance. You meet a short list of people who can already do the job and pick one.</p>
         <div class="hero__actions">
           <a href="pages/contact.html" class="btn btn--lg">Get Started</a>
-          <a href="pages/how-it-works.html" class="btn btn--purple btn--lg">See How It Works</a>
+          <a href="pages/how-it-works.html" class="btn btn--ghost btn--lg">See How It Works</a>
         </div>
         <p class="hero__note">Full-time talent, recruited to your spec, working only for you.</p>
       </div>
 
       <div class="hero__visual">
-        <div class="hero__panel">
+        <!-- PLACEHOLDER: swap for a product screenshot, dashboard mock, or hero render (1200×1400) -->
+        <div class="ph ph--tall glass" style="margin-bottom:1.25rem;">
+          <div class="ph__inner">
+            <svg class="ph__icon"><use href="#icon-img"/></svg>
+            <span class="ph__label"><b>Hero Visual</b>Product shot, dashboard mock, or abstract render — 1200×1400</span>
+          </div>
+        </div>
+        <div class="glass hero__panel">
           <span class="hero__badge">You just pick</span>
           <h4>What we carry</h4>
           <div class="hero__steps">
@@ -78,38 +102,68 @@
     </div>
   </div>
 
+  <!-- ============ LOGO STRIP (placeholder) ============ -->
+  <div class="strip" aria-hidden="true" style="border-top:none;">
+    <div class="wrap" style="padding-block:0.75rem;">
+      <p class="mono-tag" style="text-align:center;margin-bottom:1rem;">— Trusted by teams like yours —</p>
+    </div>
+    <div class="logo-row">
+      <!-- PLACEHOLDER: replace each with a client/partner logo (SVG or PNG, transparent bg) -->
+      <div class="ph ph--logo"><div class="ph__inner"><svg class="ph__icon"><use href="#icon-badge"/></svg><span class="ph__label">Client Logo</span></div></div>
+      <div class="ph ph--logo"><div class="ph__inner"><svg class="ph__icon"><use href="#icon-badge"/></svg><span class="ph__label">Client Logo</span></div></div>
+      <div class="ph ph--logo"><div class="ph__inner"><svg class="ph__icon"><use href="#icon-badge"/></svg><span class="ph__label">Client Logo</span></div></div>
+      <div class="ph ph--logo"><div class="ph__inner"><svg class="ph__icon"><use href="#icon-badge"/></svg><span class="ph__label">Client Logo</span></div></div>
+      <div class="ph ph--logo"><div class="ph__inner"><svg class="ph__icon"><use href="#icon-badge"/></svg><span class="ph__label">Client Logo</span></div></div>
+      <div class="ph ph--logo"><div class="ph__inner"><svg class="ph__icon"><use href="#icon-badge"/></svg><span class="ph__label">Client Logo</span></div></div>
+      <!-- duplicate set for seamless marquee loop -->
+      <div class="ph ph--logo"><div class="ph__inner"><svg class="ph__icon"><use href="#icon-badge"/></svg><span class="ph__label">Client Logo</span></div></div>
+      <div class="ph ph--logo"><div class="ph__inner"><svg class="ph__icon"><use href="#icon-badge"/></svg><span class="ph__label">Client Logo</span></div></div>
+      <div class="ph ph--logo"><div class="ph__inner"><svg class="ph__icon"><use href="#icon-badge"/></svg><span class="ph__label">Client Logo</span></div></div>
+      <div class="ph ph--logo"><div class="ph__inner"><svg class="ph__icon"><use href="#icon-badge"/></svg><span class="ph__label">Client Logo</span></div></div>
+      <div class="ph ph--logo"><div class="ph__inner"><svg class="ph__icon"><use href="#icon-badge"/></svg><span class="ph__label">Client Logo</span></div></div>
+      <div class="ph ph--logo"><div class="ph__inner"><svg class="ph__icon"><use href="#icon-badge"/></svg><span class="ph__label">Client Logo</span></div></div>
+    </div>
+  </div>
+
   <!-- ============ WHAT FULLY MANAGED MEANS ============ -->
   <section class="section" id="managed">
-    <div class="wrap">
-      <div class="section-head">
+    <div class="wrap feature-layout">
+      <div class="reveal">
         <span class="eyebrow">The Model</span>
-        <h2>What Fully Managed Means</h2>
-        <p class="lead">Hiring abroad on your own means writing the role, screening across time zones, running a foreign payroll, and staying compliant in a country you have never worked in. We take all of that. You stay in charge of the work.</p>
+        <h2 style="margin-bottom:1.25rem;">What Fully Managed Means</h2>
+        <p class="lead" style="margin-bottom:2.25rem;">Hiring abroad on your own means writing the role, screening across time zones, running a foreign payroll, and staying compliant in a country you have never worked in. We take all of that. You stay in charge of the work.</p>
+        <!-- PLACEHOLDER: supporting screenshot/illustration for this section (1000×1000) -->
+        <div class="ph ph--square">
+          <div class="ph__inner">
+            <svg class="ph__icon"><use href="#icon-img"/></svg>
+            <span class="ph__label"><b>Supporting Visual</b>Dashboard, workflow diagram, or team photo — 1000×1000</span>
+          </div>
+        </div>
       </div>
-      <div class="features">
+      <div class="features reveal">
         <div class="feature">
-          <div class="feature__num">1</div>
+          <div class="feature__num">01</div>
           <div>
             <h4>We Recruit</h4>
             <p>We source, screen, and test candidates specifically for your role, then hand you a short list of finalists.</p>
           </div>
         </div>
         <div class="feature">
-          <div class="feature__num">2</div>
+          <div class="feature__num">02</div>
           <div>
             <h4>We Handle Payroll &amp; Compliance</h4>
             <p>In every country we recruit from, so you never touch foreign employment law or payments.</p>
           </div>
         </div>
         <div class="feature">
-          <div class="feature__num">3</div>
+          <div class="feature__num">03</div>
           <div>
             <h4>We Manage</h4>
             <p>A dedicated account manager keeps your hire on track and stays your single point of contact.</p>
           </div>
         </div>
         <div class="feature">
-          <div class="feature__num">4</div>
+          <div class="feature__num">04</div>
           <div>
             <h4>You Lead the Work</h4>
             <p>Your hire reports to you day to day, inside your tools and workflow, like any other team member.</p>
@@ -120,14 +174,14 @@
   </section>
 
   <!-- ============ WHY HANDS-OFF WINS ============ -->
-  <section class="section section--purple">
+  <section class="section section--glow">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="eyebrow">DIY vs Managed</span>
         <h2>Why Hands-Off Wins</h2>
         <p class="lead">Most companies that struggle with offshore tried to run it themselves and drowned in admin before the savings showed up. Hand off the operational load and the math changes.</p>
       </div>
-      <div class="split">
+      <div class="split reveal">
         <div class="split__col split__col--bad">
           <h3>Doing It Yourself</h3>
           <ul class="split__list">
@@ -155,29 +209,33 @@
   <!-- ============ HOW IT WORKS ============ -->
   <section class="section" id="process">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="eyebrow">Four Steps</span>
         <h2>How It Works</h2>
         <p class="lead">You are only involved where your judgment matters. We carry the rest.</p>
       </div>
-      <div class="steps">
+      <div class="steps reveal">
         <div class="step">
-          <div class="step__n">1</div>
+          <div class="ph ph--icon"><div class="ph__inner"><svg class="ph__icon"><use href="#icon-spark"/></svg></div></div>
+          <div class="step__n">Step 01</div>
           <h4>Tell Us the Role</h4>
           <p>We get clear on the tasks, tools, hours, and what a great hire looks like a few months in.</p>
         </div>
         <div class="step">
-          <div class="step__n">2</div>
+          <div class="ph ph--icon"><div class="ph__inner"><svg class="ph__icon"><use href="#icon-spark"/></svg></div></div>
+          <div class="step__n">Step 02</div>
           <h4>We Build Your Shortlist</h4>
           <p>Sourced wide, cut hard, then tested on paid work that mirrors the real job.</p>
         </div>
         <div class="step">
-          <div class="step__n">3</div>
+          <div class="ph ph--icon"><div class="ph__inner"><svg class="ph__icon"><use href="#icon-spark"/></svg></div></div>
+          <div class="step__n">Step 03</div>
           <h4>You Choose</h4>
           <p>Interview finalists who have already proven they can do the job. The final call is yours.</p>
         </div>
         <div class="step">
-          <div class="step__n">4</div>
+          <div class="ph ph--icon"><div class="ph__inner"><svg class="ph__icon"><use href="#icon-spark"/></svg></div></div>
+          <div class="step__n">Step 04</div>
           <h4>We Keep It Running</h4>
           <p>Onboarding, payroll, compliance, and management stay with us for as long as they are on your team.</p>
         </div>
@@ -186,8 +244,8 @@
   </section>
 
   <!-- ============ ROLES BAND ============ -->
-  <section class="section section--purple roles-band">
-    <div class="wrap">
+  <section class="section section--glow roles-band">
+    <div class="wrap reveal">
       <span class="eyebrow">What You Can Hire For</span>
       <h2>If the Role Is Defined, We Can Fill It</h2>
       <div class="roles-tags">
@@ -204,18 +262,18 @@
         <span>Developers</span>
       </div>
       <p class="lead">Don't see your role? If it is defined and ongoing, we can most likely fill it. If it is not a fit, we will say so.</p>
-      <p style="margin-top:2rem;"><a href="pages/roles.html" class="btn btn--white btn--lg">See All Roles</a></p>
+      <p style="margin-top:2rem;"><a href="pages/roles.html" class="btn btn--ghost btn--lg">See All Roles</a></p>
     </div>
   </section>
 
   <!-- ============ FAQ ============ -->
   <section class="section" id="faq">
     <div class="wrap">
-      <div class="section-head">
+      <div class="section-head reveal">
         <span class="eyebrow">Questions</span>
         <h2>Frequently Asked</h2>
       </div>
-      <div class="faq">
+      <div class="faq reveal">
         <details class="faq__item" open>
           <summary class="faq__q">Who manages my hire day to day? <span class="faq__sign">+</span></summary>
           <p class="faq__a">You handle the work. We handle everything around it, from payroll and compliance to performance support, through a dedicated account manager who is your single point of contact.</p>
@@ -245,12 +303,13 @@
   </section>
 
   <!-- ============ CTA ============ -->
-  <section class="section section--acid">
-    <div class="wrap cta-block">
+  <section class="section section--cta">
+    <div class="glow-orb glow-orb--purple" style="width:300px;height:300px;bottom:-100px;left:-60px;"></div>
+    <div class="wrap cta-block reveal">
       <span class="eyebrow">Ready When You Are</span>
       <h2>Ready to Hand Off the Hard Part?</h2>
       <p class="lead">Tell us the role you need filled. We build the shortlist, handle the paperwork, and manage the engagement, so you get a great hire without the work of finding one.</p>
-      <a href="pages/contact.html" class="btn btn--purple btn--lg">Get Started</a>
+      <a href="pages/contact.html" class="btn btn--acid btn--lg">Get Started</a>
     </div>
   </section>
 
@@ -259,7 +318,13 @@
     <div class="wrap footer__grid">
       <div>
         <div class="footer__logo"><img src="assets/logo-purple.png" alt="Agent Outsource" /></div>
-        <p style="max-width:38ch;opacity:0.85;">Full-time offshore talent, fully managed. You approve the hire, we handle the rest.</p>
+        <p style="max-width:38ch;">Full-time offshore talent, fully managed. You approve the hire, we handle the rest.</p>
+        <!-- PLACEHOLDER: replace href="#" with real profile URLs -->
+        <div class="social-row">
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-5M12 11c0-1.5 1-2 2-2s2 .8 2 2v5"/></svg></a>
+          <a href="#" aria-label="X / Twitter"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l16 16M20 4L4 20"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+        </div>
       </div>
       <div>
         <h5>Company</h5>
