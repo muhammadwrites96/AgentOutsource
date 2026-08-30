@@ -177,6 +177,7 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
+  white-space: nowrap;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 1rem;
@@ -548,6 +549,8 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
    FORMS
    ============================================================ */
 .form-wrap { max-width: 640px; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.features--2col { grid-template-columns: repeat(2, 1fr); }
 .field { margin-bottom: 1.35rem; }
 .field label {
   display: block; font-family: var(--font-mono); text-transform: uppercase;
@@ -581,6 +584,7 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
   .hero__visual { max-width: 460px; }
   .feature-layout { grid-template-columns: 1fr; }
   .features { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
   .split { grid-template-columns: 1fr; }
   .steps { grid-template-columns: repeat(2, 1fr); }
   .role-grid { grid-template-columns: 1fr 1fr; }
