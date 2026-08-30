@@ -537,6 +537,7 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
 }
 .footer__grid a { display: block; padding: 0.35rem 0; color: var(--muted); font-weight: 400; }
 .footer__grid a:hover { color: var(--ink); }
+.footer__grid .social-row a { display: grid; place-items: center; padding: 0; }
 .footer__bottom {
   border-top: 1px solid var(--border);
   padding-block: 1.5rem; font-size: 0.82rem; color: var(--muted-dim);
