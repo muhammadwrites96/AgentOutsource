@@ -519,7 +519,7 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
   color: var(--muted); transition: color .15s ease, border-color .15s ease, box-shadow .15s ease;
 }
 .social-row a:hover { color: var(--cyan); border-color: var(--cyan); box-shadow: var(--glow-cyan); }
-.social-row svg { width: 18px; height: 18px; }
+.social-row svg { width: 16px; height: 16px; fill: currentColor; }
 
 /* ============================================================
    FOOTER
