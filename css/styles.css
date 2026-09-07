@@ -354,7 +354,16 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
   gap: 1rem;
   padding-block: 0.9rem;
 }
-.nav__logo img { height: 34px; width: auto; }
+.nav__logo { display: flex; align-items: center; }
+.nav__logo img {
+  height: 44px;
+  width: auto;
+  transition: height .25s ease, filter .25s ease;
+  filter: drop-shadow(0 0 16px rgba(139,92,246,0.30));
+}
+.nav__logo:hover img { filter: drop-shadow(0 0 22px rgba(139,92,246,0.55)); }
+/* Shrinks on scroll so it stays big on arrival without eating the viewport. */
+.site-header--scrolled .nav__logo img { height: 36px; }
 .nav__links { display: flex; align-items: center; gap: 2rem; }
 .nav__links a {
   color: var(--muted);
@@ -683,7 +692,7 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
   display: grid; grid-template-columns: 1.3fr 0.8fr 0.9fr 1.1fr; gap: 2.5rem;
   padding-block: clamp(3rem, 6vw, 4.5rem);
 }
-.footer__logo img { height: 40px; margin-bottom: 1.25rem; }
+.footer__logo img { height: 50px; margin-bottom: 1.25rem; }
 .footer__grid p { color: var(--muted); }
 .footer__grid h5 {
   font-family: var(--font-mono); text-transform: uppercase; font-size: 0.78rem;
@@ -771,6 +780,8 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
   .nav__links a { padding: 0.9rem 0; border-bottom: 1px solid var(--border); }
   .nav__links .nav__cta { margin-top: 0.75rem; text-align: center; justify-content: center; }
   .nav__toggle { display: flex; }
+  .nav__logo img { height: 36px; }
+  .site-header--scrolled .nav__logo img { height: 32px; }
   .steps { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: 1fr; }
   .role-grid { grid-template-columns: 1fr; }
