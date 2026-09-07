@@ -1,0 +1,13 @@
+{
+  "name": "agent-outsource",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Marketing site for AgentOutsource.com",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "@vercel/postgres": "^0.10.0",
+    "nodemailer": "^6.9.16"
+  }
+}

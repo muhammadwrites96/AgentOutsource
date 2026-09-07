@@ -46,15 +46,41 @@ All colors, type, borders, and shadows live as CSS variables at the top of `css/
 - `--ink` `#0A0A0A` / `--paper` `#F5F2EC` — neobrutalist base
 - Display font: **Archivo** · Body font: **Space Grotesk** (loaded from Google Fonts)
 
-## Connect the contact form
+## Contact form: notifications + database + admin view
 
-Open `pages/contact.html` and replace `action="#"` on the `<form>` with a real endpoint:
+The contact form (`pages/contact.html`) submits via JS (`js/main.js`) to `/api/submit-form`,
+a Vercel serverless function (`api/submit-form.js`) that:
 
-- **Formspree** — `action="https://formspree.io/f/XXXX" method="POST"`
-- **Basin** — `action="https://usebasin.com/f/XXXX" method="POST"`
-- **Netlify Forms** — add the `netlify` attribute to the `<form>` (auto-detected when hosted on Netlify)
+1. Stores every submission in Postgres (table auto-created on first request).
+2. Emails a notification to `NOTIFY_EMAIL` (defaults to agentoutsourceofficial@gmail.com) via Gmail SMTP.
+3. Captures the maximum attributes available per request: form fields, IP, Vercel's
+   edge geolocation (country/region/city/postal code/lat-long/timezone/continent),
+   user agent (parsed into browser/OS/device type), referrer, UTM params, page URL,
+   accept-language, screen/viewport size, and client timezone.
 
-Until an endpoint is set, the form shows a "not connected yet" note instead of submitting (`js/main.js`).
+Entries are viewable at `/pages/admin.html`, a password-gated dashboard (searchable table)
+backed by `/api/admin/entries.js`.
+
+### One-time setup on Vercel
+
+1. **Database** — In the Vercel dashboard, open this project → **Storage** → **Create Database** →
+   **Postgres** (Neon), and connect it to the project. This auto-injects the `POSTGRES_URL*`
+   env vars that `@vercel/postgres` needs — no manual config.
+2. **Email** — On the Gmail account that should send notifications: enable 2-Step Verification,
+   then create an [App Password](https://myaccount.google.com/apppasswords). In Vercel →
+   Settings → Environment Variables, set:
+   - `GMAIL_USER` — the sending Gmail address
+   - `GMAIL_APP_PASSWORD` — the 16-character app password
+   - `NOTIFY_EMAIL` — where notifications should land (agentoutsourceofficial@gmail.com)
+3. **Admin password** — set `ADMIN_PASSWORD` in the same Environment Variables screen, then
+   redeploy. Visit `/pages/admin.html` and log in with it.
+
+See `.env.example` for the full list. For local testing, copy it to `.env.local` and run
+`vercel dev` (requires the Vercel CLI: `npm i -g vercel`, then `vercel link` once).
+
+> Note: admin auth here is a single shared password sent as a request header over HTTPS —
+> adequate for an internal lead-review tool, not a substitute for real user accounts if the
+> data becomes sensitive.
 
 ## Connect the calendar
 
@@ -67,7 +93,10 @@ Setup notes are in HTML comments right above the placeholder.
 
 ## Deploy
 
-Any static host works: Netlify, Vercel, Cloudflare Pages, or GitHub Pages. Point it at the repo root; no build command required.
+The static pages still work on any host, but **the contact form's notifications/database/admin
+features require Vercel** (they use Vercel Serverless Functions in `/api` and Vercel Postgres,
+plus Vercel's edge geolocation headers). Deploy this repo to a Vercel project (no build command
+needed — it auto-detects the `/api` functions) and complete the one-time setup above.
 
 ## Editing with Cursor + Claude
 

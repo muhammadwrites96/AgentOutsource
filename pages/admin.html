@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin — Agent Outsource</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="../assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <style>
+    .admin-wrap { padding-block: clamp(2rem, 5vw, 3.5rem); }
+    .admin-login { max-width: 380px; margin: 4rem auto; }
+    .admin-toolbar { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+    .admin-toolbar input[type="search"] {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+      color: var(--ink); padding: 0.65rem 1rem; font-family: var(--font-body); min-width: 240px;
+    }
+    .admin-table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-sm); }
+    table.admin-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; white-space: nowrap; }
+    table.admin-table th, table.admin-table td { padding: 0.65rem 0.9rem; border-bottom: 1px solid var(--border); text-align: left; }
+    table.admin-table th { background: var(--surface-hi); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.04em; font-size: 0.72rem; color: var(--muted); position: sticky; top: 0; }
+    table.admin-table tbody tr:hover { background: var(--surface); }
+    table.admin-table td.wrap-cell { white-space: normal; max-width: 320px; }
+    .admin-count { color: var(--muted); font-size: 0.9rem; }
+    .admin-error { color: var(--coral); margin-top: 0.75rem; }
+    .admin-empty { padding: 3rem 1rem; text-align: center; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="nav__logo" href="../index.html" aria-label="Agent Outsource home">
+        <img src="../assets/logo-purple.png" alt="Agent Outsource" />
+      </a>
+      <nav class="nav__links" aria-label="Primary">
+        <a href="how-it-works.html">How It Works</a>
+        <a href="roles.html">Roles</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="btn nav__cta">Get Started</a>
+      </nav>
+      <button class="nav__toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="wrap admin-wrap">
+
+    <!-- LOGIN -->
+    <div id="admin-login" class="card admin-login">
+      <h3 style="margin-bottom:1.25rem;">Admin Login</h3>
+      <form id="admin-login-form">
+        <div class="field">
+          <label for="admin-password">Password</label>
+          <input id="admin-password" type="password" required placeholder="••••••••" autocomplete="current-password" />
+        </div>
+        <button type="submit" class="btn btn--lg" style="width:100%;">Log In</button>
+        <p class="admin-error" id="admin-login-error" style="display:none;"></p>
+      </form>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="admin-dashboard" style="display:none;">
+      <div class="admin-toolbar">
+        <div>
+          <h2 style="margin-bottom:0.25rem;">Form Submissions</h2>
+          <span class="admin-count" id="admin-count"></span>
+        </div>
+        <div style="display:flex;gap:0.75rem;align-items:center;">
+          <input type="search" id="admin-search" placeholder="Search name, email, company, country…" />
+          <button class="btn btn--ghost" id="admin-refresh">Refresh</button>
+          <button class="btn btn--ghost" id="admin-logout">Log Out</button>
+        </div>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table" id="admin-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Company</th>
+              <th>Role</th>
+              <th>Details</th>
+              <th>City</th>
+              <th>Region</th>
+              <th>Country</th>
+              <th>Timezone</th>
+              <th>IP</th>
+              <th>Browser</th>
+              <th>OS</th>
+              <th>Device</th>
+              <th>Referrer</th>
+              <th>UTM Source</th>
+              <th>UTM Medium</th>
+              <th>UTM Campaign</th>
+              <th>Language</th>
+              <th>Screen</th>
+              <th>Viewport</th>
+            </tr>
+          </thead>
+          <tbody id="admin-table-body"></tbody>
+        </table>
+        <div class="admin-empty" id="admin-empty" style="display:none;">No submissions yet.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const loginPanel = document.getElementById('admin-login');
+    const dashboard = document.getElementById('admin-dashboard');
+    const loginForm = document.getElementById('admin-login-form');
+    const loginError = document.getElementById('admin-login-error');
+    const tableBody = document.getElementById('admin-table-body');
+    const emptyState = document.getElementById('admin-empty');
+    const countEl = document.getElementById('admin-count');
+    const searchInput = document.getElementById('admin-search');
+
+    let allEntries = [];
+
+    function getStoredPassword() {
+      try { return sessionStorage.getItem('ao_admin_password') || ''; }
+      catch { return ''; }
+    }
+    function setStoredPassword(pw) {
+      try { sessionStorage.setItem('ao_admin_password', pw); } catch {}
+    }
+    function clearStoredPassword() {
+      try { sessionStorage.removeItem('ao_admin_password'); } catch {}
+    }
+
+    function escapeHtml(str) {
+      if (str === null || str === undefined) return '';
+      return String(str).replace(/[&<>"']/g, (c) => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+      }[c]));
+    }
+
+    function fmtDate(iso) {
+      if (!iso) return '';
+      const d = new Date(iso);
+      return d.toLocaleString();
+    }
+
+    function renderRows(entries) {
+      tableBody.innerHTML = '';
+      emptyState.style.display = entries.length ? 'none' : 'block';
+      countEl.textContent = entries.length + (entries.length === 1 ? ' entry' : ' entries');
+
+      const frag = document.createDocumentFragment();
+      entries.forEach((e) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${escapeHtml(fmtDate(e.created_at))}</td>
+          <td>${escapeHtml(e.name)}</td>
+          <td>${escapeHtml(e.email)}</td>
+          <td>${escapeHtml(e.company)}</td>
+          <td>${escapeHtml(e.role)}</td>
+          <td class="wrap-cell">${escapeHtml(e.details)}</td>
+          <td>${escapeHtml(e.city)}</td>
+          <td>${escapeHtml(e.region)}</td>
+          <td>${escapeHtml(e.country)}</td>
+          <td>${escapeHtml(e.timezone)}</td>
+          <td>${escapeHtml(e.ip)}</td>
+          <td>${escapeHtml(e.browser)}</td>
+          <td>${escapeHtml(e.os)}</td>
+          <td>${escapeHtml(e.device_type)}</td>
+          <td class="wrap-cell">${escapeHtml(e.referer)}</td>
+          <td>${escapeHtml(e.utm_source)}</td>
+          <td>${escapeHtml(e.utm_medium)}</td>
+          <td>${escapeHtml(e.utm_campaign)}</td>
+          <td>${escapeHtml(e.language)}</td>
+          <td>${e.screen_width ? e.screen_width + '×' + e.screen_height : ''}</td>
+          <td>${e.viewport_width ? e.viewport_width + '×' + e.viewport_height : ''}</td>
+        `;
+        frag.appendChild(tr);
+      });
+      tableBody.appendChild(frag);
+    }
+
+    function applySearch() {
+      const q = searchInput.value.trim().toLowerCase();
+      if (!q) { renderRows(allEntries); return; }
+      const filtered = allEntries.filter((e) =>
+        Object.values(e).some((v) => v !== null && v !== undefined && String(v).toLowerCase().includes(q))
+      );
+      renderRows(filtered);
+    }
+
+    async function loadEntries(password) {
+      const res = await fetch('/api/admin/entries', {
+        headers: { 'x-admin-password': password },
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error || 'Failed to load entries.');
+      }
+      return data.entries;
+    }
+
+    async function showDashboard(password) {
+      try {
+        allEntries = await loadEntries(password);
+        loginPanel.style.display = 'none';
+        dashboard.style.display = 'block';
+        renderRows(allEntries);
+      } catch (err) {
+        clearStoredPassword();
+        loginError.textContent = err.message;
+        loginError.style.display = 'block';
+      }
+    }
+
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const pw = document.getElementById('admin-password').value;
+      loginError.style.display = 'none';
+      setStoredPassword(pw);
+      showDashboard(pw);
+    });
+
+    document.getElementById('admin-refresh').addEventListener('click', () => showDashboard(getStoredPassword()));
+    document.getElementById('admin-logout').addEventListener('click', () => {
+      clearStoredPassword();
+      dashboard.style.display = 'none';
+      loginPanel.style.display = 'block';
+      document.getElementById('admin-password').value = '';
+    });
+    searchInput.addEventListener('input', applySearch);
+
+    // Auto-login if a password is already stored for this browser session.
+    const stored = getStoredPassword();
+    if (stored) showDashboard(stored);
+  </script>
+
+  <footer class="site-footer">
+    <div class="wrap footer__bottom">
+      <span>© 2026 Agent Outsource. All rights reserved.</span>
+      <span>Internal use only.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

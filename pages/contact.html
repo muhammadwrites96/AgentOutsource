@@ -44,13 +44,11 @@
       <div class="form-wrap reveal">
         <h3 style="margin-bottom:1.5rem;">Send Us Your Details</h3>
         <!--
-          FORM SETUP:
-          Replace action="#" with your endpoint. Easiest options:
-          - Formspree:  action="https://formspree.io/f/XXXXXXXX" method="POST"
-          - Netlify:    add  netlify  attribute (auto-detected on Netlify)
-          - Basin:      action="https://usebasin.com/f/XXXXXXXX" method="POST"
+          Submits via JS (js/main.js) to /api/submit-form — a Vercel serverless
+          function that stores the entry in Postgres and emails a notification.
+          See README.md "Contact form" section for one-time Vercel setup.
         -->
-        <form data-form="contact" action="#" method="POST">
+        <form data-form="contact" method="POST">
           <div class="field">
             <label for="name">Your Name</label>
             <input id="name" name="name" type="text" required placeholder="Jane Smith" />

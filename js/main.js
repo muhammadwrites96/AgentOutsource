@@ -84,21 +84,63 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ---- Contact form (front-end stub) ----
-  // Replace the endpoint below with a real handler:
-  //  - Formspree / Basin / Netlify Forms for email
-  //  - or your own API route
+  // ---- Contact form ----
+  // Submits to our own /api/submit-form serverless function, which stores
+  // the entry in Postgres and emails a notification.
   const form = document.querySelector('[data-form="contact"]');
   if (form) {
-    form.addEventListener('submit', (e) => {
-      // If no real endpoint is set yet, prevent submit and show a message.
-      if (!form.getAttribute('action') || form.getAttribute('action') === '#') {
-        e.preventDefault();
-        const status = form.querySelector('[data-form-status]');
-        if (status) {
-          status.textContent = 'Form endpoint not connected yet. Add your Formspree/Netlify action in the HTML.';
-          status.style.display = 'block';
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const status = form.querySelector('[data-form-status]');
+      const submitBtn = form.querySelector('button[type="submit"]');
+
+      const showStatus = (text) => {
+        if (!status) return;
+        status.textContent = text;
+        status.style.display = 'block';
+      };
+
+      const params = new URLSearchParams(window.location.search);
+      const payload = {
+        name: form.name?.value || '',
+        email: form.email?.value || '',
+        company: form.company?.value || '',
+        role: form.role?.value || '',
+        details: form.details?.value || '',
+        pageUrl: window.location.href,
+        utm_source: params.get('utm_source') || '',
+        utm_medium: params.get('utm_medium') || '',
+        utm_campaign: params.get('utm_campaign') || '',
+        utm_term: params.get('utm_term') || '',
+        utm_content: params.get('utm_content') || '',
+        screenWidth: window.screen?.width || null,
+        screenHeight: window.screen?.height || null,
+        viewportWidth: window.innerWidth || null,
+        viewportHeight: window.innerHeight || null,
+        clientTimezone: Intl.DateTimeFormat().resolvedOptions().timeZone || '',
+      };
+
+      if (submitBtn) submitBtn.disabled = true;
+      showStatus('Sending…');
+
+      try {
+        const res = await fetch('/api/submit-form', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await res.json().catch(() => ({}));
+
+        if (res.ok && data.ok) {
+          form.reset();
+          showStatus('Thanks — we got it. We reply within one business day.');
+        } else {
+          showStatus(data.error || 'Something went wrong. Please email us directly at hello@agentoutsource.com.');
         }
+      } catch (err) {
+        showStatus('Something went wrong. Please email us directly at hello@agentoutsource.com.');
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
       }
     });
   }
