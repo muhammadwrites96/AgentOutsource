@@ -607,6 +607,7 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
   margin-bottom: 0.85rem;
 }
 .quote__by { display: flex; align-items: center; gap: 1rem; margin-top: auto; }
+/* Takes an <img> or, for a testimonial with no photo, a <div> of initials. */
 .quote__avatar {
   width: 62px; height: 62px; flex: 0 0 auto;
   border-radius: 50%;
