@@ -18,17 +18,34 @@ agent-outsource/
 │   ├── logo-black.png
 │   ├── logo-square.png
 │   └── favicon.png
+├── api/                    # Vercel serverless functions (contact form backend)
 ├── pages/
-│   ├── how-it-works.html
-│   ├── roles.html
-│   ├── about.html
-│   └── contact.html        # Form + calendar embed
+│   ├── how-it-works.html   # served at /how-it-works
+│   ├── roles.html          # served at /roles
+│   ├── about.html          # served at /about
+│   ├── contact.html        # served at /contact — form + calendar embed
+│   └── admin.html          # served at /admin — password-gated submissions view
+├── vercel.json              # clean URLs (drops /pages and .html) + old-link redirects
 └── README.md
 ```
 
+## URL structure
+
+Pages live on disk under `pages/*.html`, but `vercel.json` rewrites clean, WordPress-style
+paths to them — e.g. `/contact` serves `pages/contact.html` without exposing `/pages` or `.html`
+in the URL bar. All internal links (`<a href>`, logo, CSS/JS/image paths) use these clean,
+root-absolute paths. Old links to `/pages/*.html` or `/index.html` 308-redirect to the clean
+equivalent, so nothing indexed or bookmarked breaks. This only takes effect when deployed to
+Vercel — opening the HTML files directly or via a plain static server (see below) will still
+need the real `/pages/...html` paths.
+
 ## Run locally
 
-No build needed. Either open `index.html` directly, or serve it:
+For full parity with production (clean URLs + the `/api` contact form functions), use the
+Vercel CLI: `npm i -g vercel`, `vercel link` once, then `vercel dev`.
+
+For quick visual/CSS work where clean URLs don't matter, no build is needed — open `index.html`
+directly, or serve it (navigating to `/pages/contact.html` etc. instead of `/contact`):
 
 ```bash
 # Python

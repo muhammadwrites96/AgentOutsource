@@ -1,0 +1,19 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/pages/how-it-works.html", "destination": "/how-it-works", "permanent": true },
+    { "source": "/pages/roles.html", "destination": "/roles", "permanent": true },
+    { "source": "/pages/about.html", "destination": "/about", "permanent": true },
+    { "source": "/pages/contact.html", "destination": "/contact", "permanent": true },
+    { "source": "/pages/admin.html", "destination": "/admin", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/how-it-works", "destination": "/pages/how-it-works.html" },
+    { "source": "/roles", "destination": "/pages/roles.html" },
+    { "source": "/about", "destination": "/pages/about.html" },
+    { "source": "/contact", "destination": "/pages/contact.html" },
+    { "source": "/admin", "destination": "/pages/admin.html" }
+  ]
+}
