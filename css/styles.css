@@ -319,10 +319,6 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
 .ph--icon .ph__inner { padding: 0; }
 .ph--icon .ph__icon { width: 26px; height: 26px; }
 
-.ph--avatar { aspect-ratio: 1/1; border-radius: 50%; width: 100%; }
-.ph--avatar .ph__icon { width: 28px; height: 28px; }
-.ph--avatar .ph__label { display: none; }
-
 /* ============================================================
    HEADER / NAV
    ============================================================ */
@@ -701,7 +697,7 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
 }
 
 /* ============================================================
-   GALLERY STRIP (photo placeholder rows — About, Contact)
+   GALLERY STRIP (culture photos — About)
    ============================================================ */
 /* Two up, not four: the source photos are ~700px wide, so a 2-column cell
    renders them at roughly 1:1 instead of shrinking them into thumbnails. */
@@ -723,10 +719,6 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
   border-color: var(--border-hi);
   box-shadow: var(--glow-purple);
 }
-.avatar-row { display: flex; gap: 1.25rem; flex-wrap: wrap; }
-.avatar-row .avatar-item { width: 84px; text-align: center; }
-.avatar-row .ph--avatar { width: 84px; height: 84px; margin-bottom: 0.5rem; }
-.avatar-row .avatar-item span { font-family: var(--font-mono); font-size: 0.65rem; color: var(--muted-dim); text-transform: uppercase; }
 
 /* ============================================================
    SOCIAL ICONS (footer)
