@@ -323,10 +323,6 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
 .ph--avatar .ph__icon { width: 28px; height: 28px; }
 .ph--avatar .ph__label { display: none; }
 
-.ph--logo { aspect-ratio: 3/1; border-radius: var(--radius-sm); }
-.ph--logo .ph__icon { width: 22px; height: 22px; }
-.ph--logo .ph__label { font-size: 0.62rem; }
-
 /* ============================================================
    HEADER / NAV
    ============================================================ */
@@ -479,13 +475,7 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
 .strip__track b { color: var(--cyan); }
 @keyframes scroll { to { transform: translateX(-50%); } }
 
-.logo-row {
-  display: flex; gap: 2rem; white-space: nowrap;
-  animation: scroll 24s linear infinite;
-}
-.logo-row .ph--logo { width: 150px; flex: 0 0 auto; }
-.strip:hover .strip__track,
-.strip:hover .logo-row { animation-play-state: paused; }
+.strip:hover .strip__track { animation-play-state: paused; }
 
 /* ============================================================
    FEATURE GRID (asymmetric, with supporting visual)
