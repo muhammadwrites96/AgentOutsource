@@ -647,6 +647,27 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
 .quote__role { font-size: 0.88rem; color: var(--muted); }
 
 /* ============================================================
+   VETTING NOTE (how-it-works) — closes out the stage list
+   ============================================================ */
+.vet-note {
+  margin-top: 0.75rem;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  border: 1px solid rgba(139,92,246,0.35);
+  border-radius: var(--radius);
+  background: rgba(139,92,246,0.08);
+}
+.vet-note h4 { margin: 0.65rem 0 0.7rem; }
+.vet-note p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.1rem; }
+/* A text link, not a button — the page CTA sits directly below and a second
+   button here would compete with it. */
+.vet-note__link {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-weight: 600; font-size: 0.95rem; color: var(--purple-bright);
+  transition: color .15s ease, gap .15s ease;
+}
+.vet-note__link:hover { color: var(--cyan); gap: 0.75rem; }
+
+/* ============================================================
    FAQ
    ============================================================ */
 .faq { display: grid; gap: 0.9rem; max-width: 860px; }

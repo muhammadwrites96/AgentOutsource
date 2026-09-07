@@ -128,12 +128,107 @@
         <span class="eyebrow">Vetting</span>
         <h2 style="margin-bottom:1.25rem;">How We Test Candidates</h2>
         <p class="lead" style="margin-bottom:2.25rem;">By the time you meet someone, they have already been tested for your role. Every stage is built around your specific job.</p>
-        <!-- PLACEHOLDER: screenshot of a scorecard, test result, or interview snapshot (1000×1000) -->
-        <div class="ph ph--square">
-          <div class="ph__inner">
-            <svg class="ph__icon"><use href="#icon-img"/></svg>
-            <span class="ph__label"><b>Supporting Visual</b>Scorecard, test result, or interview snapshot — 1000×1000</span>
-          </div>
+        <div class="model-visual">
+          <svg viewBox="0 0 1000 1000" role="img" aria-label="A candidate scorecard showing the four vetting stages — screen, preview test, deep interview, and paid work test — each scored and passed, with an overall recommendation to shortlist and a reminder that the client makes the final call.">
+            <defs>
+              <linearGradient id="scBar" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#8B5CF6"/>
+                <stop offset="1" stop-color="#4CF3E0"/>
+              </linearGradient>
+              <linearGradient id="scAvatar" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#8B5CF6"/>
+                <stop offset="1" stop-color="#4CF3E0"/>
+              </linearGradient>
+              <radialGradient id="scGlowPurple" cx="10%" cy="6%" r="55%">
+                <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.40"/>
+                <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="scGlowCyan" cx="92%" cy="94%" r="55%">
+                <stop offset="0%" stop-color="#4CF3E0" stop-opacity="0.30"/>
+                <stop offset="100%" stop-color="#4CF3E0" stop-opacity="0"/>
+              </radialGradient>
+              <pattern id="scDots" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="1" cy="1" r="1" fill="rgba(255,255,255,0.08)"/>
+              </pattern>
+              <clipPath id="scAvatarClip"><circle cx="128" cy="179" r="46"/></clipPath>
+              <style>
+                .sc-mono{font-family:"JetBrains Mono", ui-monospace, monospace;}
+                .sc-display{font-family:"Sora","Space Grotesk",sans-serif;}
+              </style>
+            </defs>
+
+            <rect x="0" y="0" width="1000" height="1000" fill="#171433"/>
+            <rect x="0" y="0" width="1000" height="1000" fill="url(#scGlowPurple)"/>
+            <rect x="0" y="0" width="1000" height="1000" fill="url(#scGlowCyan)"/>
+            <rect x="0" y="0" width="1000" height="1000" fill="url(#scDots)"/>
+
+            <!-- title bar -->
+            <rect x="0" y="0" width="1000" height="80" fill="rgba(255,255,255,0.03)"/>
+            <line x1="0" y1="80" x2="1000" y2="80" stroke="rgba(255,255,255,0.10)"/>
+            <text x="48" y="48" class="sc-mono" font-size="19" letter-spacing="2.5" fill="#B79CFB">CANDIDATE SCORECARD</text>
+            <text x="952" y="48" text-anchor="end" class="sc-mono" font-size="17" letter-spacing="1.5" fill="#A29CC2">ROLE · SDR</text>
+
+            <!-- candidate identity -->
+            <rect x="48" y="104" width="904" height="150" rx="20" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.10)"/>
+            <g clip-path="url(#scAvatarClip)">
+              <circle cx="128" cy="179" r="46" fill="url(#scAvatar)"/>
+              <circle cx="128" cy="163" r="14" fill="#06050F"/>
+              <path d="M96,229 a32,26 0 0,1 64,0 Z" fill="#06050F"/>
+            </g>
+            <text x="200" y="170" class="sc-display" font-size="34" font-weight="700" fill="#F5F3FC">Candidate A-2291</text>
+            <text x="200" y="206" font-size="19" fill="#A29CC2">Tested against your role, not a generic one</text>
+            <rect x="762" y="152" width="166" height="42" rx="21" fill="rgba(76,243,224,0.12)" stroke="rgba(76,243,224,0.35)"/>
+            <text x="845" y="179" text-anchor="middle" class="sc-mono" font-size="15" letter-spacing="1.2" fill="#4CF3E0">4 OF 4 PASSED</text>
+
+            <!-- stage 01 -->
+            <rect x="48" y="292" width="904" height="92" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.10)"/>
+            <rect x="72" y="314" width="52" height="48" rx="14" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.35)"/>
+            <text x="98" y="345" text-anchor="middle" class="sc-mono" font-size="17" font-weight="700" fill="#B79CFB">01</text>
+            <text x="146" y="332" class="sc-display" font-size="24" font-weight="700" fill="#F5F3FC">Screen</text>
+            <rect x="146" y="350" width="560" height="10" rx="5" fill="rgba(255,255,255,0.08)"/>
+            <rect x="146" y="350" width="526" height="10" rx="5" fill="url(#scBar)"/>
+            <text x="928" y="344" text-anchor="end" class="sc-mono" font-size="22" font-weight="700" fill="#4CF3E0">94</text>
+
+            <!-- stage 02 -->
+            <rect x="48" y="400" width="904" height="92" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.10)"/>
+            <rect x="72" y="422" width="52" height="48" rx="14" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.35)"/>
+            <text x="98" y="453" text-anchor="middle" class="sc-mono" font-size="17" font-weight="700" fill="#B79CFB">02</text>
+            <text x="146" y="440" class="sc-display" font-size="24" font-weight="700" fill="#F5F3FC">Preview Test</text>
+            <rect x="146" y="458" width="560" height="10" rx="5" fill="rgba(255,255,255,0.08)"/>
+            <rect x="146" y="458" width="493" height="10" rx="5" fill="url(#scBar)"/>
+            <text x="928" y="452" text-anchor="end" class="sc-mono" font-size="22" font-weight="700" fill="#4CF3E0">88</text>
+
+            <!-- stage 03 -->
+            <rect x="48" y="508" width="904" height="92" rx="18" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.10)"/>
+            <rect x="72" y="530" width="52" height="48" rx="14" fill="rgba(139,92,246,0.15)" stroke="rgba(139,92,246,0.35)"/>
+            <text x="98" y="561" text-anchor="middle" class="sc-mono" font-size="17" font-weight="700" fill="#B79CFB">03</text>
+            <text x="146" y="548" class="sc-display" font-size="24" font-weight="700" fill="#F5F3FC">Deep Interview</text>
+            <rect x="146" y="566" width="560" height="10" rx="5" fill="rgba(255,255,255,0.08)"/>
+            <rect x="146" y="566" width="510" height="10" rx="5" fill="url(#scBar)"/>
+            <text x="928" y="560" text-anchor="end" class="sc-mono" font-size="22" font-weight="700" fill="#4CF3E0">91</text>
+
+            <!-- stage 04 — the paid work test, highlighted as the decisive one -->
+            <rect x="48" y="616" width="904" height="92" rx="18" fill="rgba(212,245,61,0.07)" stroke="rgba(212,245,61,0.30)"/>
+            <rect x="72" y="638" width="52" height="48" rx="14" fill="rgba(212,245,61,0.15)" stroke="rgba(212,245,61,0.40)"/>
+            <text x="98" y="669" text-anchor="middle" class="sc-mono" font-size="17" font-weight="700" fill="#D4F53D">04</text>
+            <text x="146" y="656" class="sc-display" font-size="24" font-weight="700" fill="#F5F3FC">Paid Work Test</text>
+            <rect x="146" y="674" width="560" height="10" rx="5" fill="rgba(255,255,255,0.08)"/>
+            <rect x="146" y="674" width="538" height="10" rx="5" fill="#D4F53D"/>
+            <text x="928" y="668" text-anchor="end" class="sc-mono" font-size="22" font-weight="700" fill="#D4F53D">96</text>
+
+            <!-- verdict -->
+            <rect x="48" y="740" width="904" height="150" rx="20" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.10)"/>
+            <circle cx="102" cy="800" r="24" fill="#D4F53D"/>
+            <path d="M-10,0 L-4,7 L11,-9" transform="translate(102,800)" stroke="#0B0A1C" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <text x="148" y="794" class="sc-display" font-size="32" font-weight="700" fill="#F5F3FC">Shortlisted</text>
+            <text x="148" y="832" font-size="19" fill="#A29CC2">Reviewed on real, paid work — ready for your interview.</text>
+            <line x1="88" y1="852" x2="912" y2="852" stroke="rgba(255,255,255,0.10)"/>
+            <text x="88" y="878" class="sc-mono" font-size="15" letter-spacing="1.5" fill="#A29CC2">ONE OF 6 SENT TO THE CLIENT</text>
+
+            <!-- footer chip -->
+            <rect x="290" y="926" width="420" height="56" rx="28" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.22)"/>
+            <text x="500" y="962" text-anchor="middle" class="sc-mono" font-size="17" letter-spacing="1.8" fill="#F5F3FC">YOU MAKE THE FINAL CALL</text>
+          </svg>
         </div>
       </div>
       <div class="features reveal">
@@ -152,6 +247,13 @@
         <div class="feature">
           <div class="feature__num">04</div>
           <div><h4>Paid Work Test</h4><p>A few hours of the actual tasks they would do for you. We pay them for it.</p></div>
+        </div>
+
+        <div class="vet-note">
+          <span class="mono-tag">The other side of it</span>
+          <h4>If the match isn't right, that's on us</h4>
+          <p>Testing this hard means most candidates never reach you. The ones who do have already done the job. And if a hire still isn't working, we step in and fix it rather than leaving it on you.</p>
+          <a href="/roles" class="vet-note__link">See the roles we fill <span aria-hidden="true">&rarr;</span></a>
         </div>
       </div>
     </div>
