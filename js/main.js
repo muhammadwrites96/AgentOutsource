@@ -17,6 +17,73 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 
+  // ---- Scroll-reactive header ----
+  const header = document.querySelector('.site-header');
+  if (header) {
+    const setScrolled = () => header.classList.toggle('site-header--scrolled', window.scrollY > 10);
+    setScrolled();
+    window.addEventListener('scroll', setScrolled, { passive: true });
+  }
+
+  // ---- FAQ: single-open accordion ----
+  const faqItems = document.querySelectorAll('.faq__item');
+  faqItems.forEach((item) => {
+    item.addEventListener('toggle', () => {
+      if (item.open) {
+        faqItems.forEach((other) => { if (other !== item) other.open = false; });
+      }
+    });
+  });
+
+  // ---- Newsletter form (front-end stub) ----
+  const newsletter = document.querySelector('[data-form="newsletter"]');
+  if (newsletter) {
+    newsletter.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const status = newsletter.querySelector('[data-form-status]');
+      if (status) {
+        status.textContent = 'Thanks — connect this form to Mailchimp/Beehiiv to start collecting emails.';
+        status.style.display = 'block';
+      }
+    });
+  }
+
+  // ---- Animated stat counters ----
+  const counters = document.querySelectorAll('[data-count-to]');
+  if (counters.length) {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const animateCount = (el) => {
+      const target = parseFloat(el.getAttribute('data-count-to'));
+      const suffix = el.getAttribute('data-suffix') || '';
+      if (prefersReducedMotion) {
+        el.textContent = target + suffix;
+        return;
+      }
+      const duration = 1200;
+      const start = performance.now();
+      const tick = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(target * eased) + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    if ('IntersectionObserver' in window) {
+      const countIo = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateCount(entry.target);
+            countIo.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      counters.forEach((el) => countIo.observe(el));
+    } else {
+      counters.forEach(animateCount);
+    }
+  }
+
   // ---- Contact form (front-end stub) ----
   // Replace the endpoint below with a real handler:
   //  - Formspree / Basin / Netlify Forms for email
