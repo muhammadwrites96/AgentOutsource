@@ -449,14 +449,22 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
 }
 .model-visual svg { display: block; width: 100%; height: 100%; }
 
-/* Founder portrait (About) — same framed treatment as the SVG visuals.
-   height:auto so the width/height attributes don't override aspect-ratio. */
+/* Founder story (About): copy leads on the left, portrait sits right.
+   Its own class — .feature-layout is shared with sections that run the other
+   way round, visual first. */
+.founder-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+/* height:auto so the width/height attributes don't override aspect-ratio. */
 .founder-photo {
   width: 100%;
   height: auto;
   aspect-ratio: 3 / 4;
   object-fit: cover;
-  border-radius: var(--radius);
+  border-radius: clamp(24px, 3.5vw, 48px);
   border: 1px solid var(--border);
   box-shadow: var(--glow-purple);
 }
@@ -874,6 +882,7 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
   .hero__grid { grid-template-columns: 1fr; }
   .hero__visual { max-width: 460px; }
   .feature-layout { grid-template-columns: 1fr; }
+  .founder-layout { grid-template-columns: 1fr; }
   .features { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .split { grid-template-columns: 1fr; }
