@@ -751,6 +751,7 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
 .cta-block { text-align: center; position: relative; z-index: 1; }
 .cta-block h2 { margin-bottom: 1rem; }
 .cta-block p { max-width: 52ch; margin: 0 auto 2rem; }
+.cta-actions { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
 .cta-panel {
   border-radius: var(--radius);
   border: 1px solid var(--border-hi);
@@ -803,6 +804,27 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
   border-top: 1px solid var(--border);
   padding-block: 1.5rem; font-size: 0.82rem; color: var(--muted-dim);
   display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+}
+
+/* ============================================================
+   BOOKING EMBED (Google Calendar appointment schedule)
+   ============================================================ */
+.booking { padding: 0; overflow: hidden; }
+.booking__frame {
+  display: block;
+  width: 100%;
+  height: 660px;
+  border: 0;
+  /* Google's scheduler renders light; a white sheet inside the dark card is
+     the widget's own chrome, so let it own the full panel cleanly. */
+  background: #fff;
+}
+.booking__alt { color: var(--purple-bright); }
+.booking__alt:hover { color: var(--cyan); }
+/* The widget stacks header, month grid and slot list vertically on narrow
+   screens, so it needs more room than the two-column desktop layout. */
+@media (max-width: 640px) {
+  .booking__frame { height: 880px; }
 }
 
 /* ============================================================

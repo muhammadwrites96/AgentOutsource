@@ -88,27 +88,16 @@
       <!-- CALENDAR -->
       <div class="reveal">
         <h3 style="margin-bottom:1.5rem;">Or Book a Call</h3>
-        <div class="card" style="padding:0;overflow:hidden;">
-          <!--
-            CALENDAR SETUP:
-            Paste your Cal.com or Calendly embed here. Two options:
-
-            1) Inline embed (replace the placeholder below), e.g. Calendly:
-               <div class="calendly-inline-widget"
-                    data-url="https://calendly.com/YOUR-HANDLE/intro"
-                    style="min-width:320px;height:640px;"></div>
-               <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-
-            2) Cal.com inline embed — grab the snippet from your Cal.com event type.
-          -->
-          <div style="min-height:480px;display:grid;place-items:center;padding:2rem;text-align:center;">
-            <div>
-              <p style="font-family:var(--font-mono);font-weight:600;text-transform:uppercase;letter-spacing:0.08em;font-size:0.95rem;margin-bottom:0.85rem;color:var(--purple-bright);">Calendar Embed Goes Here</p>
-              <p style="max-width:34ch;margin:0 auto 1.5rem;color:var(--muted);">Drop your Calendly or Cal.com inline embed into this panel. Setup notes are in the HTML comment.</p>
-              <a href="mailto:hello@agentoutsource.com" class="btn btn--ghost">Email Us Instead</a>
-            </div>
-          </div>
+        <div class="card booking">
+          <!-- Google Calendar appointment schedule, embedded inline (gv=true). -->
+          <iframe class="booking__frame"
+                  src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0V2yNKYAklx2Jz6JmEHdDfX5AkKxxRpAiVDivsOsLpA-Kv15gP5bl4PbvKmL4mRlOj9MZxVCos?gv=true"
+                  title="Book a call with Agent Outsource"
+                  loading="lazy"></iframe>
         </div>
+        <p class="form-note">
+          Prefer email? <a href="mailto:hello@agentoutsource.com" class="booking__alt">hello@agentoutsource.com</a>
+        </p>
 
         <!-- PLACEHOLDER: supporting graphic — team photo, workflow snapshot, or product shot (960×540) -->
         <div class="ph ph--wide" style="margin-top:1.5rem;">
@@ -142,7 +131,7 @@
       </div>
       <div>
         <h5>Get In Touch</h5>
-        <a href="/contact">Book a Call</a>
+        <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0V2yNKYAklx2Jz6JmEHdDfX5AkKxxRpAiVDivsOsLpA-Kv15gP5bl4PbvKmL4mRlOj9MZxVCos?gv=true" target="_blank" rel="noopener">Book a Call</a>
         <a href="mailto:hello@agentoutsource.com">hello@agentoutsource.com</a>
       </div>
     </div>
