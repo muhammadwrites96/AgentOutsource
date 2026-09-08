@@ -449,6 +449,18 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
 }
 .model-visual svg { display: block; width: 100%; height: 100%; }
 
+/* Founder portrait (About) — same framed treatment as the SVG visuals.
+   height:auto so the width/height attributes don't override aspect-ratio. */
+.founder-photo {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--glow-purple);
+}
+
 /* ---------- Fully-managed cycle diagram ----------
    Entrance runs once when the parent .reveal enters the viewport, stepping
    01 -> 02 -> 03 -> 04 so the loop reads in order. A single pulse then
