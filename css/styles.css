@@ -310,9 +310,6 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
 }
 .ph__label b { display: block; color: var(--purple-bright); font-size: 0.78rem; letter-spacing: 0.1em; margin-bottom: 0.2rem; }
 
-.ph--hero  { aspect-ratio: 4 / 3; min-height: 320px; }
-.ph--wide  { aspect-ratio: 16 / 9; }
-.ph--square{ aspect-ratio: 1 / 1; }
 .ph--tall  { aspect-ratio: 3 / 4; }
 
 .ph--icon { aspect-ratio: 1/1; width: 64px; height: 64px; border-radius: var(--radius-sm); }
