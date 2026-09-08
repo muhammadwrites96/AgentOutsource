@@ -105,6 +105,33 @@
         </table>
         <div class="admin-empty" id="admin-empty" style="display:none;">No submissions yet.</div>
       </div>
+
+      <div class="admin-toolbar" style="margin-top:3rem;">
+        <div>
+          <h2 style="margin-bottom:0.25rem;">Newsletter Subscribers</h2>
+          <span class="admin-count" id="admin-subs-count"></span>
+        </div>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table" id="admin-subs-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Email</th>
+              <th>City</th>
+              <th>Country</th>
+              <th>Page</th>
+              <th>Referrer</th>
+              <th>Browser</th>
+              <th>Device</th>
+              <th>UTM Source</th>
+              <th>UTM Campaign</th>
+            </tr>
+          </thead>
+          <tbody id="admin-subs-body"></tbody>
+        </table>
+        <div class="admin-empty" id="admin-subs-empty" style="display:none;">No subscribers yet.</div>
+      </div>
     </div>
 
   </div>
@@ -119,7 +146,12 @@
     const countEl = document.getElementById('admin-count');
     const searchInput = document.getElementById('admin-search');
 
+    const subsBody = document.getElementById('admin-subs-body');
+    const subsEmpty = document.getElementById('admin-subs-empty');
+    const subsCount = document.getElementById('admin-subs-count');
+
     let allEntries = [];
+    let allSubscribers = [];
 
     function getStoredPassword() {
       try { return sessionStorage.getItem('ao_admin_password') || ''; }
@@ -198,15 +230,32 @@
       if (!res.ok || !data.ok) {
         throw new Error(data.error || 'Failed to load entries.');
       }
-      return data.entries;
+      return data;
+    }
+
+    function renderSubscribers(subs) {
+      subsBody.innerHTML = '';
+      subsEmpty.style.display = subs.length ? 'none' : 'block';
+      subsCount.textContent = subs.length + (subs.length === 1 ? ' subscriber' : ' subscribers');
+      subs.forEach((s) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = [
+          fmtDate(s.created_at), s.email, s.city, s.country, s.page_url,
+          s.referer, s.browser, s.device_type, s.utm_source, s.utm_campaign,
+        ].map((v) => `<td>${escapeHtml(v)}</td>`).join('');
+        subsBody.appendChild(tr);
+      });
     }
 
     async function showDashboard(password) {
       try {
-        allEntries = await loadEntries(password);
+        const data = await loadEntries(password);
+        allEntries = data.entries || [];
+        allSubscribers = data.subscribers || [];
         loginPanel.style.display = 'none';
         dashboard.style.display = 'block';
         renderRows(allEntries);
+        renderSubscribers(allSubscribers);
       } catch (err) {
         clearStoredPassword();
         loginError.textContent = err.message;

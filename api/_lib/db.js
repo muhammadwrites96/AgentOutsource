@@ -56,6 +56,33 @@ async function ensureSchema() {
       vercel_request_id TEXT
     );
   `;
+  await sql`
+    CREATE TABLE IF NOT EXISTS subscribers (
+      id SERIAL PRIMARY KEY,
+      created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+
+      -- one row per address; re-subscribing is a no-op, not a duplicate
+      email TEXT NOT NULL UNIQUE,
+
+      ip TEXT,
+      country TEXT,
+      region TEXT,
+      city TEXT,
+
+      user_agent TEXT,
+      browser TEXT,
+      os TEXT,
+      device_type TEXT,
+      referer TEXT,
+      page_url TEXT,
+
+      utm_source TEXT,
+      utm_medium TEXT,
+      utm_campaign TEXT,
+
+      vercel_request_id TEXT
+    );
+  `;
   ensured = true;
 }
 

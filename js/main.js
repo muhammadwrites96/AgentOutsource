@@ -35,15 +35,58 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ---- Newsletter form (front-end stub) ----
+  // ---- Newsletter form ----
+  // Posts to /api/subscribe, which stores the address in Postgres and emails
+  // a notification. Re-subscribing is a no-op server-side.
   const newsletter = document.querySelector('[data-form="newsletter"]');
   if (newsletter) {
-    newsletter.addEventListener('submit', (e) => {
+    newsletter.addEventListener('submit', async (e) => {
       e.preventDefault();
       const status = newsletter.querySelector('[data-form-status]');
-      if (status) {
-        status.textContent = 'Thanks — connect this form to Mailchimp/Beehiiv to start collecting emails.';
+      const submitBtn = newsletter.querySelector('button[type="submit"]');
+      const emailInput = newsletter.querySelector('input[type="email"]');
+
+      const showStatus = (text) => {
+        if (!status) return;
+        status.textContent = text;
         status.style.display = 'block';
+      };
+
+      const email = (emailInput?.value || '').trim();
+      if (!email) {
+        showStatus('Please enter your email address.');
+        return;
+      }
+
+      if (submitBtn) submitBtn.disabled = true;
+      showStatus('Subscribing…');
+
+      try {
+        const res = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email,
+            pageUrl: window.location.href,
+            utm_source: new URLSearchParams(window.location.search).get('utm_source') || '',
+            utm_medium: new URLSearchParams(window.location.search).get('utm_medium') || '',
+            utm_campaign: new URLSearchParams(window.location.search).get('utm_campaign') || '',
+          }),
+        });
+        const data = await res.json().catch(() => ({}));
+
+        if (res.ok && data.ok) {
+          newsletter.reset();
+          showStatus(data.alreadySubscribed
+            ? "You're already on the list — nothing more to do."
+            : "You're on the list. We'll be in touch.");
+        } else {
+          showStatus(data.error || 'Something went wrong. Please try again.');
+        }
+      } catch (err) {
+        showStatus('Something went wrong. Please try again.');
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
       }
     });
   }

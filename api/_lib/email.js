@@ -57,4 +57,35 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
-module.exports = { sendSubmissionNotification };
+async function sendSubscriberNotification(entry) {
+  const to = process.env.NOTIFY_EMAIL || 'agentoutsourceofficial@gmail.com';
+  const transport = getTransport();
+
+  const row = (label, value) =>
+    value ? `<tr><td style="padding:4px 12px 4px 0;color:#666;white-space:nowrap;">${label}</td><td style="padding:4px 0;"><strong>${escapeHtml(String(value))}</strong></td></tr>` : '';
+
+  const html = `
+    <h2 style="margin:0 0 12px;">New newsletter subscriber</h2>
+    <table cellspacing="0" cellpadding="0" style="font-family:sans-serif;font-size:14px;">
+      ${row('Email', entry.email)}
+      ${row('Location', [entry.city, entry.region, entry.country].filter(Boolean).join(', '))}
+      ${row('Page URL', entry.page_url)}
+      ${row('Referrer', entry.referer)}
+      ${row('Browser / OS', [entry.browser, entry.os].filter(Boolean).join(' / '))}
+      ${row('UTM source', entry.utm_source)}
+      ${row('UTM medium', entry.utm_medium)}
+      ${row('UTM campaign', entry.utm_campaign)}
+      ${row('Subscribed at', entry.created_at)}
+    </table>
+  `;
+
+  await transport.sendMail({
+    from: `Agent Outsource Website <${process.env.GMAIL_USER}>`,
+    to,
+    replyTo: entry.email || undefined,
+    subject: `New subscriber: ${entry.email}`,
+    html,
+  });
+}
+
+module.exports = { sendSubmissionNotification, sendSubscriberNotification };

@@ -18,10 +18,15 @@ module.exports = async (req, res) => {
 
   try {
     await ensureSchema();
-    const result = await sql`
-      SELECT * FROM submissions ORDER BY created_at DESC LIMIT 500;
-    `;
-    return res.status(200).json({ ok: true, entries: result.rows });
+    const [submissions, subscribers] = await Promise.all([
+      sql`SELECT * FROM submissions ORDER BY created_at DESC LIMIT 500;`,
+      sql`SELECT * FROM subscribers ORDER BY created_at DESC LIMIT 500;`,
+    ]);
+    return res.status(200).json({
+      ok: true,
+      entries: submissions.rows,
+      subscribers: subscribers.rows,
+    });
   } catch (err) {
     console.error('Failed to load submissions:', err);
     return res.status(500).json({ ok: false, error: 'Failed to load submissions.' });
