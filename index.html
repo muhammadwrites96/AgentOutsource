@@ -298,8 +298,17 @@
               <pattern id="mmDots" width="20" height="20" patternUnits="userSpaceOnUse">
                 <circle cx="1" cy="1" r="1" fill="rgba(255,255,255,0.09)"/>
               </pattern>
-              <marker id="mmArrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
-                <path d="M0,0 L10,5 L0,10 Z" fill="#4CF3E0"/>
+              <marker id="mmArrow1" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+                <path class="mm-tip mm-tip--1" d="M0,0 L10,5 L0,10 Z" fill="#4CF3E0"/>
+              </marker>
+              <marker id="mmArrow2" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+                <path class="mm-tip mm-tip--2" d="M0,0 L10,5 L0,10 Z" fill="#4CF3E0"/>
+              </marker>
+              <marker id="mmArrow3" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+                <path class="mm-tip mm-tip--3" d="M0,0 L10,5 L0,10 Z" fill="#4CF3E0"/>
+              </marker>
+              <marker id="mmArrow4" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+                <path class="mm-tip mm-tip--4" d="M0,0 L10,5 L0,10 Z" fill="#4CF3E0"/>
               </marker>
               <style>
                 .mm-mono{font-family:"JetBrains Mono", ui-monospace, monospace;}
@@ -312,45 +321,60 @@
             <rect x="0" y="0" width="1000" height="1000" fill="url(#mmGlowCyan)"/>
             <rect x="0" y="0" width="1000" height="1000" fill="url(#mmDots)"/>
 
-            <!-- circular flow arrows -->
-            <path d="M620,225 Q790,260 705,450" fill="none" stroke="url(#mmBar)" stroke-width="4" marker-end="url(#mmArrow)"/>
-            <path d="M705,550 Q790,740 620,775" fill="none" stroke="url(#mmBar)" stroke-width="4" marker-end="url(#mmArrow)"/>
-            <path d="M380,775 Q210,740 295,550" fill="none" stroke="url(#mmBar)" stroke-width="4" marker-end="url(#mmArrow)"/>
-            <path d="M295,450 Q210,260 380,225" fill="none" stroke="url(#mmBar)" stroke-width="4" marker-end="url(#mmArrow)"/>
+            <!-- circular flow arrows: base arc draws in, pulse overlay circulates after -->
+            <path class="mm-arc mm-arc--1" pathLength="100" d="M620,225 Q790,260 705,450" fill="none" stroke="url(#mmBar)" stroke-width="4" marker-end="url(#mmArrow1)"/>
+            <path class="mm-arc mm-arc--2" pathLength="100" d="M705,550 Q790,740 620,775" fill="none" stroke="url(#mmBar)" stroke-width="4" marker-end="url(#mmArrow2)"/>
+            <path class="mm-arc mm-arc--3" pathLength="100" d="M380,775 Q210,740 295,550" fill="none" stroke="url(#mmBar)" stroke-width="4" marker-end="url(#mmArrow3)"/>
+            <path class="mm-arc mm-arc--4" pathLength="100" d="M295,450 Q210,260 380,225" fill="none" stroke="url(#mmBar)" stroke-width="4" marker-end="url(#mmArrow4)"/>
+
+            <path class="mm-pulse mm-pulse--1" pathLength="100" d="M620,225 Q790,260 705,450" fill="none" stroke="#EAFFFB" stroke-width="6" stroke-linecap="round"/>
+            <path class="mm-pulse mm-pulse--2" pathLength="100" d="M705,550 Q790,740 620,775" fill="none" stroke="#EAFFFB" stroke-width="6" stroke-linecap="round"/>
+            <path class="mm-pulse mm-pulse--3" pathLength="100" d="M380,775 Q210,740 295,550" fill="none" stroke="#EAFFFB" stroke-width="6" stroke-linecap="round"/>
+            <path class="mm-pulse mm-pulse--4" pathLength="100" d="M295,450 Q210,260 380,225" fill="none" stroke="#EAFFFB" stroke-width="6" stroke-linecap="round"/>
 
             <!-- hub -->
-            <circle cx="500" cy="500" r="100" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.24)"/>
-            <text x="500" y="490" text-anchor="middle" class="mm-display" font-size="58" font-weight="700" fill="url(#mmBar)">&#8734;</text>
-            <text x="500" y="545" text-anchor="middle" class="mm-mono" font-size="12" letter-spacing="2" fill="#C7C2E0">FULLY MANAGED</text>
+            <g class="mm-hub">
+              <circle cx="500" cy="500" r="100" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.24)"/>
+              <text x="500" y="490" text-anchor="middle" class="mm-display" font-size="58" font-weight="700" fill="url(#mmBar)">&#8734;</text>
+              <text x="500" y="545" text-anchor="middle" class="mm-mono" font-size="12" letter-spacing="2" fill="#C7C2E0">FULLY MANAGED</text>
+            </g>
 
             <!-- node 01 — Recruit (top) -->
-            <rect x="360" y="95" width="280" height="140" rx="20" fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.20)"/>
-            <rect x="384" y="119" width="46" height="46" rx="12" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.20)"/>
-            <text x="407" y="142" text-anchor="middle" dominant-baseline="central" class="mm-mono" font-size="16" font-weight="700" fill="#B79CFB">01</text>
-            <text x="448" y="152" class="mm-display" font-size="22" font-weight="700" fill="#F5F3FC">Recruit</text>
-            <text x="384" y="199" font-size="14" fill="#C7C2E0">Source, screen &amp; test</text>
+            <g class="mm-node mm-node--1">
+              <rect x="360" y="95" width="280" height="140" rx="20" fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.20)"/>
+              <rect x="384" y="119" width="46" height="46" rx="12" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.20)"/>
+              <text x="407" y="142" text-anchor="middle" dominant-baseline="central" class="mm-mono" font-size="16" font-weight="700" fill="#B79CFB">01</text>
+              <text x="448" y="152" class="mm-display" font-size="22" font-weight="700" fill="#F5F3FC">Recruit</text>
+              <text x="384" y="199" font-size="14" fill="#C7C2E0">Source, screen &amp; test</text>
+            </g>
 
             <!-- node 02 — Payroll & Compliance (right) -->
-            <rect x="695" y="430" width="280" height="140" rx="20" fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.20)"/>
-            <rect x="719" y="454" width="46" height="46" rx="12" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.20)"/>
-            <text x="742" y="477" text-anchor="middle" dominant-baseline="central" class="mm-mono" font-size="16" font-weight="700" fill="#B79CFB">02</text>
-            <text x="783" y="474" class="mm-display" font-size="19" font-weight="700" fill="#F5F3FC">Payroll &amp;</text>
-            <text x="783" y="496" class="mm-display" font-size="19" font-weight="700" fill="#F5F3FC">Compliance</text>
-            <text x="719" y="534" font-size="14" fill="#C7C2E0">Every country, covered</text>
+            <g class="mm-node mm-node--2">
+              <rect x="695" y="430" width="280" height="140" rx="20" fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.20)"/>
+              <rect x="719" y="454" width="46" height="46" rx="12" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.20)"/>
+              <text x="742" y="477" text-anchor="middle" dominant-baseline="central" class="mm-mono" font-size="16" font-weight="700" fill="#B79CFB">02</text>
+              <text x="783" y="474" class="mm-display" font-size="19" font-weight="700" fill="#F5F3FC">Payroll &amp;</text>
+              <text x="783" y="496" class="mm-display" font-size="19" font-weight="700" fill="#F5F3FC">Compliance</text>
+              <text x="719" y="534" font-size="14" fill="#C7C2E0">Every country, covered</text>
+            </g>
 
             <!-- node 03 — Manage (bottom) -->
-            <rect x="360" y="765" width="280" height="140" rx="20" fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.20)"/>
-            <rect x="384" y="789" width="46" height="46" rx="12" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.20)"/>
-            <text x="407" y="812" text-anchor="middle" dominant-baseline="central" class="mm-mono" font-size="16" font-weight="700" fill="#B79CFB">03</text>
-            <text x="448" y="822" class="mm-display" font-size="22" font-weight="700" fill="#F5F3FC">Manage</text>
-            <text x="384" y="869" font-size="14" fill="#C7C2E0">One point of contact</text>
+            <g class="mm-node mm-node--3">
+              <rect x="360" y="765" width="280" height="140" rx="20" fill="rgba(255,255,255,0.09)" stroke="rgba(255,255,255,0.20)"/>
+              <rect x="384" y="789" width="46" height="46" rx="12" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.20)"/>
+              <text x="407" y="812" text-anchor="middle" dominant-baseline="central" class="mm-mono" font-size="16" font-weight="700" fill="#B79CFB">03</text>
+              <text x="448" y="822" class="mm-display" font-size="22" font-weight="700" fill="#F5F3FC">Manage</text>
+              <text x="384" y="869" font-size="14" fill="#C7C2E0">One point of contact</text>
+            </g>
 
             <!-- node 04 — You Lead (left) -->
-            <rect x="25" y="430" width="280" height="140" rx="20" fill="rgba(212,245,61,0.12)" stroke="rgba(212,245,61,0.45)"/>
-            <rect x="49" y="454" width="46" height="46" rx="12" fill="rgba(212,245,61,0.14)" stroke="rgba(212,245,61,0.45)"/>
-            <text x="72" y="477" text-anchor="middle" dominant-baseline="central" class="mm-mono" font-size="16" font-weight="700" fill="#D4F53D">04</text>
-            <text x="113" y="486" class="mm-display" font-size="22" font-weight="700" fill="#D4F53D">You Lead</text>
-            <text x="49" y="534" font-size="14" fill="#A29CC2">Runs inside your team</text>
+            <g class="mm-node mm-node--4">
+              <rect x="25" y="430" width="280" height="140" rx="20" fill="rgba(212,245,61,0.12)" stroke="rgba(212,245,61,0.45)"/>
+              <rect x="49" y="454" width="46" height="46" rx="12" fill="rgba(212,245,61,0.14)" stroke="rgba(212,245,61,0.45)"/>
+              <text x="72" y="477" text-anchor="middle" dominant-baseline="central" class="mm-mono" font-size="16" font-weight="700" fill="#D4F53D">04</text>
+              <text x="113" y="486" class="mm-display" font-size="22" font-weight="700" fill="#D4F53D">You Lead</text>
+              <text x="49" y="534" font-size="14" fill="#A29CC2">Runs inside your team</text>
+            </g>
           </svg>
         </div>
       </div>
