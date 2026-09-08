@@ -454,16 +454,26 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
    way round, visual first. */
 .founder-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  grid-template-columns: minmax(0, 1.32fr) minmax(0, 0.68fr);
   gap: clamp(2rem, 5vw, 4.5rem);
-  align-items: center;
+  align-items: stretch;
+}
+/* The copy keeps its natural paragraph rhythm and sets the row height; the
+   portrait is cropped down to match it rather than the gaps being stretched
+   out to match the portrait. */
+.founder-media { position: relative; }
+.founder-media .founder-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
 }
 /* height:auto so the width/height attributes don't override aspect-ratio. */
 .founder-photo {
   width: 100%;
   height: auto;
-  aspect-ratio: 3 / 4;
   object-fit: cover;
+  object-position: center 30%;   /* keeps the face framed as height is cropped */
   border-radius: clamp(24px, 3.5vw, 48px);
   border: 1px solid var(--border);
   box-shadow: var(--glow-purple);
@@ -883,6 +893,9 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
   .hero__visual { max-width: 460px; }
   .feature-layout { grid-template-columns: 1fr; }
   .founder-layout { grid-template-columns: 1fr; }
+  /* Stacked, the copy no longer sets the frame's height, so it needs its own
+     or the absolutely-positioned portrait collapses to nothing. */
+  .founder-media { aspect-ratio: 5 / 4; }
   .features { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .split { grid-template-columns: 1fr; }
