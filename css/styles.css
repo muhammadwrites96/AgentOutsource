@@ -454,7 +454,7 @@ h4 { font-size: clamp(1.05rem, 1.8vw, 1.3rem); }
    way round, visual first. */
 .founder-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.32fr) minmax(0, 0.68fr);
+  grid-template-columns: minmax(0, 0.68fr) minmax(0, 1.32fr);
   gap: clamp(2rem, 5vw, 4.5rem);
   align-items: stretch;
 }
